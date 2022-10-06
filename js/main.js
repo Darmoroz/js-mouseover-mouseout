@@ -7,26 +7,31 @@ const squareRefs = [];
 for (let i = 0; i < BLOCKS; i += 1) {
 	const square = document.createElement("div");
 	square.className = "square";
-	square.addEventListener("mouseenter", setColor);
-	square.addEventListener("touch", setColor);
+	// square.addEventListener("mouseenter", setColor);
+	// square.addEventListener("touchstart", setColor);
+	// square.addEventListener("touchmove", setColor);
 	// square.addEventListener("mouseleave", removeColor);
 	squareRefs.push(square);
 }
 refs.inner.append(...squareRefs);
-refs.square = document.querySelector(".square");
+refs.square = document.querySelectorAll(".square");
 
-// square.addEventListener("mouseout", () => removeColor(square));
+refs.inner.addEventListener("mouseover", setColor);
+refs.inner.addEventListener("touchmove", setColor);
 
 function setColor(e) {
 	const color = getRandomHexColor();
-	console.log(color);
-	e.currentTarget.style.background = color;
-	e.currentTarget.style.boxShadow = `0 0 12px ${color}`;
+	if (e.target !== e.currentTarget) {
+		e.target.style.background = color;
+		e.target.style.boxShadow = `0 0 12px ${color}`;
+	}
 }
 
 function removeColor(e) {
-	e.currentTarget.style.background = "#2d2d2d";
-	e.currentTarget.style.boxShadow = "0 0 4px #000";
+	if (e.target !== e.currentTarget) {
+		e.target.style.background = "#2d2d2d";
+		e.target.style.boxShadow = "0 0 4px #000";
+	}
 }
 
 function getRandomHexColor() {

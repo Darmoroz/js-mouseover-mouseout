@@ -35,9 +35,9 @@ h1 {
 	height: 16px;
 	width: 16px;
 	margin: 1px;
-	transition: 10s ease;
+	/* transition: 1s ease; */
 }
 
 .square:hover {
-	transition-duration: 0s;
+	transition-duration: 2s;
 }
