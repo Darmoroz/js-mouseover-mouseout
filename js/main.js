@@ -1,13 +1,14 @@
 const refs = {
 	inner: document.querySelector(".inner"),
 };
-const BLOCKS = 5000;
+const BLOCKS = 4000;
 const squareRefs = [];
 
 for (let i = 0; i < BLOCKS; i += 1) {
 	const square = document.createElement("div");
 	square.className = "square";
 	square.addEventListener("mouseenter", setColor);
+	square.addEventListener("touch", setColor);
 	// square.addEventListener("mouseleave", removeColor);
 	squareRefs.push(square);
 }
